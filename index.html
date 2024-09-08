@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Client</title>
+</head>
+<body>
+  <h1>Kafka WebSocket Messages</h1>
+  <ul id="messages"></ul>
+
+  <script>
+    const ws = new WebSocket('ws://localhost:8082');
+    
+
+    ws.onmessage = (event) => {
+      // console.log('Message received:', event.data);
+      const messages = document.getElementById('messages');
+      const messageItem = document.createElement('li');
+      messageItem.textContent = event.data;
+      messages.appendChild(messageItem);
+    };
+  </script>
+</body>
+</html>
